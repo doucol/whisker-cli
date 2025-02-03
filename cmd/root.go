@@ -27,12 +27,11 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	var dflt string
+	dflt := ""
 	if home := homedir.HomeDir(); home != "" {
 		dflt = filepath.Join(home, ".kube", "config")
 	}
-	kcev := os.Getenv("KUBECONFIG")
-	if kcev != "" {
+	if kcev := os.Getenv("KUBECONFIG"); kcev != "" {
 		dflt = kcev
 	}
 	rootCmd.PersistentFlags().StringVar(&kubeConfig, "kubeconfig", dflt, "absolute path to the kubeconfig file")
@@ -54,9 +53,8 @@ func Execute() int {
 		cmd.SetContext(cmdContext.ToContext(cmd.Context()))
 		return nil
 	}
-	err := rootCmd.Execute()
-	if err != nil {
-		return 1
+	if err := rootCmd.Execute(); err != nil {
+		return -1
 	}
 	return 0
 }
