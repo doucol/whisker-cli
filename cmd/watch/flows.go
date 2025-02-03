@@ -91,6 +91,6 @@ var WatchFlowsCmd = &cobra.Command{
 		// 	column += 1
 		// }
 
-		return nil
+		// return nil
 	},
 }
