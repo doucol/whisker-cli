@@ -17,6 +17,7 @@ var WatchFlowsCmd = &cobra.Command{
 	Long:  `Watch live calico flows allow/deny in near real-time`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Printf("watch a live view of allow/deny flows...coming soon\n")
+		return fmt.Errorf("not yet implemented")
 		// clientset := internal.ClientsetFromContext(cmd.Context())
 		// // pods, err := clientset.CoreV1().Pods("kube-system").List(context.Background(), metav1.ListOptions{})
 		// // if err != nil {
