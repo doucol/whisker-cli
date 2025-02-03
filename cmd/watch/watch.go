@@ -9,10 +9,7 @@ var WatchCmd = &cobra.Command{
 	Short: "Watch a variety of Calico resources",
 	Long:  `Watch a variety of Calico resources`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if err := cmd.Help(); err != nil {
-			return err
-		}
-		return nil
+		return cmd.Help()
 	},
 }
 

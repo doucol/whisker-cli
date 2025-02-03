@@ -16,10 +16,7 @@ var rootCmd = &cobra.Command{
 	Short: "Project Calico utilities",
 	Long:  "whisker\nA collection of Project Calico utilities",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if err := cmd.Help(); err != nil {
-			return err
-		}
-		return nil
+		return cmd.Help()
 	},
 }
 
