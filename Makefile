@@ -6,12 +6,15 @@ else
   DATE := $(shell date -u -d @${SEC} +"%Y-%m-%dT%H:%M:%SZ")
 endif
 
-APP := whisker-cli
+APP := whisker
 OUT ?= bin/$(APP)
-SRC := github.com/doucol/$(APP)
+SRC := github.com/doucol/$(APP)-cli
 VER ?= v0.0.1
 
 default: help
+
+clean: ## Clean bin & test cache
+	@rm $(OUT) && go clean --testcache
 
 test: ## Run tests
 	@go clean --testcache && go test ./...

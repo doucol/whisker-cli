@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -13,9 +12,9 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "whisker-cli",
+	Use:   "whisker",
 	Short: "Project Calico utilities",
-	Long:  "whisker-cli\nA collection of Project Calico utilities which may or may not be helpful",
+	Long:  "whisker\nA collection of Project Calico utilities",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := cmd.Help(); err != nil {
 			return err
@@ -41,7 +40,7 @@ func init() {
 	}
 	rootCmd.PersistentFlags().StringVar(&kubeConfig, "kubeconfig", dflt, "absolute path to the kubeconfig file")
 	rootCmd.PersistentFlags().StringVar(&kubeContext, "kubecontext", "", "(optional) kubeconfig context to use")
-	rootCmd.AddCommand(watch.MonitorCmd, aboutCmd, versionCmd)
+	rootCmd.AddCommand(watch.WatchCmd, aboutCmd, versionCmd)
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
@@ -60,7 +59,6 @@ func Execute() int {
 	}
 	err := rootCmd.Execute()
 	if err != nil {
-		fmt.Printf("Error: %s\n", err.Error())
 		return 1
 	}
 	return 0

@@ -1,7 +1,11 @@
 package main
 
-import "github.com/doucol/whisker-cli/cmd"
+import (
+	"os"
+
+	"github.com/doucol/whisker-cli/cmd"
+)
 
 func main() {
-	cmd.Execute()
+	os.Exit(cmd.Execute())
 }
